@@ -1,0 +1,35 @@
+{% extends "__layout.twig" %} {% block content %}
+<div class="container">
+  <h1>Отзывы на проекты</h1>
+  <hr />
+  <table
+    class="table table-bordered table-striped table-info"
+    style="text-align: center; width: 100%"
+  >
+    {% for project in projects %}
+    <thead>
+      <tr>
+        <th style="width: 100%; font-size:larger" scope="col" colspan="2">{{ project.title }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for answer in answers %}
+        {% for form in forms %}
+          {% if answer.id_form == form.id and form.id_p == project.id %}
+          <tr>
+            {% for question in questions %}
+              {% if question.id == form.id_q %}
+                <td style="text-align: left;">{{ question.question }}</td>
+              {% endif %}
+            {% endfor %}
+            <td style="width: 70%">{{ answer.answer }}</td>
+          </tr>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </tbody>
+    {% endfor %}
+  </table>
+</div>
+
+{% endblock %}

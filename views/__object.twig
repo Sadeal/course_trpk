@@ -1,0 +1,64 @@
+{% extends "__layout.twig" %} {% block content %}
+<div class="container" style="margin-top: 14px">
+  {% if stud == 0 %}
+  <form enctype="multipart/form-data" method="POST" class="row g-3">
+    <div class="col-6">
+      <label class="form-label">Выберите оценочный вопрос</label>
+      <select class="form-control" name="range">
+        {% for q in q_o %}
+        <option value="{{ q.id }}">{{ q.question }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-6">
+      <label class="form-label">Выберите многосложный вопрос</label>
+      <select class="form-control" name="text">
+        {% for q in q_t %}
+        <option value="{{ q.id }}">{{ q.question }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-12 text-end">
+      <button type="submit" class="btn btn-primary">
+        Сформировать анкету отзыва
+      </button>
+    </div>
+  </form>
+
+  {% else %}
+
+  <form enctype="multipart/form-data" method="POST" class="row g-3">
+    <div class="col-12">
+      <label class="form-label col-12">{{ q_o[0][0] }}</label>
+      <input
+        type="range"
+        name="range"
+        min="1"
+        max="10"
+        value="5"
+        class="slider col-3"
+        id="range"
+      />
+      <label id="output" class="form-label"></label>
+    </div>
+    <div class="col-6">
+      <label class="form-label col-12">{{ q_t[0][0] }}</label>
+      <textarea name="text" style="width: 85vw; min-height: 100px"></textarea>
+    </div>
+    <div class="col-12 text-end">
+      <button type="submit" class="btn btn-primary">Оставить отзыв</button>
+    </div>
+  </form>
+  {% endif %} {% block objectContent %} {% endblock %}
+</div>
+
+<script>
+  var slider = document.getElementById("range");
+  var output = document.getElementById("output");
+  output.innerHTML = slider.value;
+
+  slider.oninput = function () {
+    output.innerHTML = this.value;
+  };
+</script>
+{% endblock %}

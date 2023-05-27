@@ -1,0 +1,64 @@
+{% extends "__layout.twig" %} {% block content %}
+<div
+  class="container d-flex flex-row"
+  style="margin-left: 12.5%; flex-wrap: wrap; width: fit-content"
+>
+  {% for object in projects %}
+  <div
+    class="d-flex flex-column"
+    style="margin-right: 50px; margin-bottom: 145px; width: 75vw"
+  >
+    <div
+      class="list-group position-relative"
+      style="
+        outline: 1px solid rgba(100, 100, 100, 0.25);
+        border-radius: 10px;
+        padding: 5px;
+        margin-top: 15px;
+      "
+    >
+      <div>
+        <h2>{{ object.title }}</h2>
+        <br />
+        <span>Бахвалова Зинаида Андреевна, Каташевцев Михаил Дмитриевич</span>
+        <br />
+        <span>АСУб, ИСТб, ИСМб, ЭВМб</span>
+        <br /><br />
+        <span
+          ><b>Цель:</b> Автоматизация процесса формирования списков студентов на
+          получение повышенной стипендии</span
+        >
+        <br />
+        <span><b>Старт проекта:</b> 06.02.2023</span>
+        <div
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+          "
+        >
+          {% if stud == 1 and object.id in student_p and object.id in
+          project_with_form %}
+          <a
+            class="btn btn-link"
+            href="/project/ans/{{ object.id }}?project={{ object.id }}"
+          >
+            Ответить на отзыв
+          </a>
+          {% endif %} {% if stud == 0 and object.id in teacher_p and object.id
+          not in project_with_form %}
+          <a
+            class="btn btn-link"
+            href="/project/make/{{ object.id }}?project={{ object.id }}"
+          >
+            Сформировать отзыв
+          </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
