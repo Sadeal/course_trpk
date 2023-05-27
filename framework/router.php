@@ -66,7 +66,7 @@ class Router
 
 		$controllerInstance->setParams($matches);
 
-		if ($controllerInstance instanceof BaseGamesTwigController) {
+		if ($controllerInstance instanceof TwigController) {
 			$controllerInstance->setTwig($this->twig);
 		}
 

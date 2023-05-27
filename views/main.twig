@@ -20,7 +20,7 @@
       <div>
         <h2>{{ object.title }}</h2>
         <br />
-        <span>Бахвалова Зинаида Андреевна, Каташевцев Михаил Дмитриевич</span>
+        <span>Бахвалова Зинаида Андреевна</span>
         <br />
         <span>АСУб, ИСТб, ИСМб, ЭВМб</span>
         <br /><br />
@@ -44,7 +44,7 @@
             class="btn btn-link"
             href="/project/ans/{{ object.id }}?project={{ object.id }}"
           >
-            Ответить на отзыв
+            Оставить отзыв
           </a>
           {% endif %} {% if stud == 0 and object.id in teacher_p and object.id
           not in project_with_form %}

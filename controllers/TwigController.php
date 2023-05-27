@@ -1,6 +1,6 @@
 <?php
 
-class BaseGamesTwigController extends TwigBaseController
+class TwigController extends TwigBaseController
 {
 	public function getContext(): array
 	{
